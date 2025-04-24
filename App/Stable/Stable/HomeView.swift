@@ -11,7 +11,7 @@ struct ContentCard: Identifiable {
 
 // MARK: - ViewModel
 class HomeViewModel: ObservableObject {
-    @Published var userName: String = "Michael"
+    @Published var userName: String = "Charlotte"
     @Published var sleepHours: Int = 80
     @Published var activityHours: Int = 12
     @Published var contentCards: [ContentCard] = []
@@ -47,7 +47,7 @@ struct HomeView: View {
     
     var body: some View {
         ZStack {
-            Color(white: 0.95, opacity: 1.0)
+            Color.stablePrimary
                 .ignoresSafeArea()
             
             VStack(spacing: 0) {
@@ -72,35 +72,37 @@ struct HomeView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text("Hi, \(viewModel.userName) 👋")
                     .font(.system(size: 24, weight: .bold))
+              Text("Your learning topics for today")
+                .font(.system(size: 20, weight: .bold))
+                .foregroundStyle(Color.stableTextSecondary)
             }
             .padding(.leading)
             
             Spacer()
             
             // Use a system image as fallback since the profilePic may not exist
-            Image(systemName: "person.circle.fill")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 40, height: 40)
-                .foregroundColor(.gray)
-                .clipShape(Circle())
-                .padding(.trailing)
+//            Image(systemName: "person.circle.fill")
+//                .resizable()
+//                .aspectRatio(contentMode: .fill)
+//                .frame(width: 40, height: 40)
+//                .foregroundColor(.gray)
+//                .clipShape(Circle())
+//                .padding(.trailing)
         }
         .padding(.top, 16)
         .padding(.bottom, 8)
-        .background(Color.white)
     }
     
     // MARK: - Stats Cards
     private var statsCardsView: some View {
         HStack(spacing: 16) {
-            statsCard(
-                title: "Sleep",
-                value: "\(viewModel.sleepHours)",
-                unit: "hours",
-                icon: "moon.fill",
-                color: Color.blue
-            )
+//            statsCard(
+//                title: "Sleep",
+//                value: "\(viewModel.sleepHours)",
+//                unit: "hours",
+//                icon: "moon.fill",
+//                color: Color.blue
+//            )
             
             statsCard(
                 title: "Streak",
@@ -156,28 +158,22 @@ struct HomeView: View {
     private func understandingCardView(card: ContentCard) -> some View {
         VStack(spacing: 0) {
             HStack(spacing: 16) {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(Color(white: 0.9))
-                        .frame(width: 50, height: 50)
-                    
-                    Text(card.icon)
-                        .font(.system(size: 24))
-                }
-                
+                Text(card.icon)
+                    .font(.system(size: 24))
+
                 VStack(alignment: .leading, spacing: 4) {
                     Text(card.title)
                         .font(.system(size: 16, weight: .medium))
                     
-                    HStack(spacing: 4) {
-                        Text("Your rating:")
-                            .font(.system(size: 12))
-                            .foregroundColor(.gray)
-                        
-                        Text("\(card.rating)/10")
-                            .font(.system(size: 12, weight: .semibold))
-                            .foregroundColor(ratingColor(for: card.rating))
-                    }
+//                    HStack(spacing: 4) {
+//                        Text("Your rating:")
+//                            .font(.system(size: 12))
+//                            .foregroundColor(.gray)
+//                        
+//                        Text("\(card.rating)/10")
+//                            .font(.system(size: 12, weight: .semibold))
+//                            .foregroundColor(ratingColor(for: card.rating))
+//                    }
                 }
                 
                 Spacer()

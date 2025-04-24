@@ -11,13 +11,13 @@ struct SubTopicRowView: View {
                     .foregroundColor(.black)
                 Spacer()
                 if subtopic.isSelected {
-                    Image(systemName: "checkmark")
-                        .foregroundColor(.stablePrimary)
+                    Image(systemName: "checkmark.circle.fill")
+                    .foregroundColor(.black)
                 }
             }
             .padding()
             .frame(maxWidth: .infinity)
-            .background(Color.stableTopicBackground)
+            .background(subtopic.isSelected ? Color.stableTopicBackground : .white)
             .cornerRadius(12)
         }
     }

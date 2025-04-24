@@ -48,7 +48,7 @@ struct SubTopicsView: View {
                     }) {
                     Text(currentTopicIndex < topics.count - 1 ? "Next" : "Start Learning")
                         .font(.stableBody())
-                        .foregroundColor(.stablePrimary)
+                        .foregroundColor(.black)
                         .frame(maxWidth: .infinity)
                         .frame(height: 56)
                         .background(.white)

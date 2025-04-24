@@ -19,7 +19,7 @@ struct TopicRowView: View {
                 HStack {
                     Text(topic.name)
                         .font(.stableBody())
-                        .foregroundColor(.stablePrimary)
+                        .foregroundColor(Color.black)
                         .padding(.leading)
                     Spacer()
                   if topic.expertise >= 0.2 {

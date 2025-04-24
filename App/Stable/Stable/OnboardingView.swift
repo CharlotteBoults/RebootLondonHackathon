@@ -49,7 +49,7 @@ struct OnboardingView: View {
                     Button(action: { showSubTopics = true }) {
                     Text("Select Sub-Topics")
                         .font(.stableBody())
-                        .foregroundColor(.stablePrimary)
+                        .foregroundColor(.black)
                         .frame(maxWidth: .infinity)
                         .frame(height: 56)
                         .background(.white)
