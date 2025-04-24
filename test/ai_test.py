@@ -8,7 +8,7 @@ endpoint = "https://team12hacker03.openai.azure.com/"
 model_name = "o3-mini"
 deployment = "o3-mini"
 
-subscription_key = "94AyvW2opL0U247mxRKMto6l9m6o6hNmtUxJZFfrVJJc1saq1lDEJQQJ99BDACmepeSXJ3w3AAABACOGzGsW"
+subscription_key = ""
 api_version = "2024-12-01-preview"
 
 client = AzureOpenAI(
