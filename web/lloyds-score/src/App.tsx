@@ -113,7 +113,7 @@ function App() {
                 <Profile user={data.userData} />
                 <Card className="d-flex justify-content-center align-items-start">
                     <Card.Body className="container">
-                        <Tab.Container id="left-tabs-example" activeKey={activeTab} onSelect={(selectedKey) => setActiveTab(selectedKey || 'request')}>
+                        <Tab.Container id="left-tabs-example" activeKey={activeTab} onSelect={(selectedKey) => setActiveTab(selectedKey || 'home')}>
                             <Nav variant="tabs">
                                 <Nav.Item>
                                     <Nav.Link href="#home" eventKey="home">Home</Nav.Link>

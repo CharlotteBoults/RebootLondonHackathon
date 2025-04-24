@@ -1,9 +1,12 @@
 
+import { Tab } from 'react-bootstrap';
 
 const HomeTabPane = () => {
     return (
         <>
-        <p>Welcome</p>
+        <Tab.Pane eventKey="home" className="text-start py-4">
+            <p>Welcome to Lloyds score</p>
+        </Tab.Pane>
         </>
     );
 };
