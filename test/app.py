@@ -1,15 +1,13 @@
 import os
-from openai import AzureOpenAI
 import json
+import streamlit as st
+from openai import AzureOpenAI
 
-# Load the JSON file
+# Load the JSON file containing product data
 with open('data/CAG.json', 'r') as f:
     data = json.load(f)
 
-
-
-
-
+# Azure OpenAI setup
 endpoint = "https://team12hacker03.openai.azure.com/"
 model_name = "o3-mini"
 deployment = "o3-mini"
@@ -23,43 +21,35 @@ client = AzureOpenAI(
     api_key=subscription_key,
 )
 
-
+# System prompt setup
 system_prompt = f"You are a banking assistant. Answer the user's query using only the following information: {data['cashback']}"
 
-
-from flask import Flask, request, jsonify
-from flask_cors import CORS
-
-app = Flask(__name__)
-CORS(app)  # Allow requests from local HTML
-
+# Function to process user input and call the OpenAI API
 def process_input(user_input):
-    
     response = client.chat.completions.create(
-    messages=[
-        {
-            "role": "system",
-            "content": system_prompt
-        },
-        {
-            "role": "user",
-            "content": user_input,
-        }
-    ],
-    max_completion_tokens=100000,
-    model=deployment
-)
-
-    response.choices[0].message.content
-
+        messages=[
+            {
+                "role": "system",
+                "content": system_prompt
+            },
+            {
+                "role": "user",
+                "content": user_input,
+            }
+        ],
+        max_completion_tokens=100000,
+        model=deployment
+    )
     return response.choices[0].message.content
 
-@app.route('/process', methods=['POST'])
-def process():
-    data = request.json
-    user_input = data.get('input')
-    result = process_input(user_input)
-    return jsonify({'output': result})
+# Streamlit UI
+st.title("Banking Assistant - Choose your product and ask a question")
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# User input to select a product (or use a specific question)
+user_input = st.text_input("Ask a question about a product or service:")
+
+if user_input:
+    # Call the model and show the result
+    response = process_input(user_input)
+    st.write("Response from the assistant:")
+    st.write(response)
