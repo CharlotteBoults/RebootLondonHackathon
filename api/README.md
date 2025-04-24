@@ -1,2 +1,4 @@
-# kube-jit-gh-teams
-A open source application to implement self-service access with Kubernetes RBAC, integrated with GitHub Teams.
+## Run
+```sh
+go run main.go
+```

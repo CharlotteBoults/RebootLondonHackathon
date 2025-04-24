@@ -116,7 +116,7 @@ function App() {
                         <Tab.Container id="left-tabs-example" activeKey={activeTab} onSelect={(selectedKey) => setActiveTab(selectedKey || 'home')}>
                             <Nav variant="tabs">
                                 <Nav.Item>
-                                    <Nav.Link href="#home" eventKey="home">Home</Nav.Link>
+                                    <Nav.Link href="#home" eventKey="home">Product Hub</Nav.Link>
                                 </Nav.Item>
                                 <Nav.Item>
                                     <Nav.Link href="#whatsHot" eventKey="whatsHot">Whats Hot</Nav.Link>
