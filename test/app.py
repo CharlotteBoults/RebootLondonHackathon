@@ -22,10 +22,13 @@ client = AzureOpenAI(
 )
 
 # System prompt setup
-system_prompt = f"You are a banking assistant. Answer the user's query using only the following information: {data['cashback']}"
+
 
 # Function to process user input and call the OpenAI API
-def process_input(user_input):
+def process_input(user_input, product):
+
+    system_prompt = f"You are a banking assistant. Answer the user's query using only the following information. Responses should be be max 50 words. Text should be displayed in a digestable format using a title and bulleted lists, not just one big block. Use a friendly and professional tone. Information: {data[product]}"
+
     response = client.chat.completions.create(
         messages=[
             {
@@ -37,7 +40,7 @@ def process_input(user_input):
                 "content": user_input,
             }
         ],
-        max_completion_tokens=100000,
+        max_completion_tokens=10000,
         model=deployment
     )
     return response.choices[0].message.content
